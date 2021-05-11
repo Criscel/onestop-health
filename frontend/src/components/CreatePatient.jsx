@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 function CreatePatient() {
@@ -23,6 +24,14 @@ function CreatePatient() {
     function handleClick(event) {
         event.preventDefault();
         console.log(input);
+
+        const newPatient = {
+            title: input.title,
+            lastname: input.lastname,
+            firstname: input.firstname
+        }
+
+        axios.post('http://localhost:3001/create', newPatient)
     }
     return (
         <div className= "container">
