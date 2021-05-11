@@ -9,7 +9,7 @@ function CreatePatient() {
     })
 
     function handleChange(event) {
-        // console.log(evet.target)
+        // console.log(event.target)
         const { name, value } = event.target;
 
         setInput(prevInput => {
