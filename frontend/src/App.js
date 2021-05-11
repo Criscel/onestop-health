@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import CreatePatient from "./components/CreatePatient";
+import PatientList from "./components/PatientList";
 
 function App() {
   return (
@@ -14,11 +16,11 @@ function App() {
         </Route>
 
         <Route path="/lists">
-          PATIENT LIST
+          <PatientList />
         </Route>
 
         <Route path="/create">
-          CREATE PATIENT
+          <CreatePatient />
         </Route>
 
       </Router>
