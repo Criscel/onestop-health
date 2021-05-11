@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         <Navbar />
 
         <Route path="/" exact>
-          HOME
+          <Home />
         </Route>
 
         <Route path="/lists">
@@ -19,7 +20,7 @@ function App() {
         <Route path="/create">
           CREATE PATIENT
         </Route>
-        
+
       </Router>
     </div>
   );
