@@ -16,4 +16,10 @@ router.route("/create").post((req, res) => {
     newPatient.save();
 });
 
+//another route to take page to /lists and get data from database
+router.route("/lists").get((req,res) => {
+    Patient.find()
+    .then(foundPatients => res.json(foundPatients))
+})
+
 module.exports = router;
