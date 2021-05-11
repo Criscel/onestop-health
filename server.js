@@ -10,7 +10,7 @@ app.use(express.json());
 mongoose.connect("mongodb+srv://dbUser:Admin123@celcluster.p4l5f.mongodb.net/medical_records_db", { useNewUrlParser: true, useUnifiedTopology: true });
 
 //require route
-
+app.use("/", require("./routes/patientRoute"));
 
 //port must be different from react(3000)
 const port = process.env.PORT || 3001;
