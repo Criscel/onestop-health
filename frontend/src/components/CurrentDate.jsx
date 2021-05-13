@@ -1,14 +1,14 @@
 import React from "react";
 
-function currentDate() {
+function CurrentDate() {
     const showdate = new Date();
-    const displayCurrentDate = showdate.getDate()+' '+showdate.getMonth()+' '+showdate.getFullYear();
+    const displayCurrentDate = showdate.getDate() + '/' + (showdate.getMonth()+1) + '/' + showdate.getFullYear();
 
     return(
         <div>
-            <input type="text" value={displayCurrentDate} readOnly />
+            <input type="text" placeholder={displayCurrentDate} readOnly />
         </div>
     )
 }
 
-export default currentDate;
+export default CurrentDate;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import CurrentDate from "./CurrentDate";
 
 function CreateConsultation() {
     const [input, setInput] = useState({
@@ -34,6 +35,7 @@ function CreateConsultation() {
     return (
         <div className="container">
             <h1>CONSULTATION</h1>
+            <CurrentDate />
             <form>
                 <div className="row">
                     <div className="col-sm">
