@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 function CreateConsultation() {
@@ -21,6 +22,13 @@ function CreateConsultation() {
     function handleClick(event) {
         event.preventDefault();
         console.log(input);
+
+        const newConsultation = {
+            illness: input.illness,
+            diagnosis: input.diagnosis
+        }
+
+        axios.post('http://localhost:3001/createConsultation', newConsultation)
     }
 
     return (

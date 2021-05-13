@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Patient = require("../models/patientModel");
+const Consultation = require("../models/consultationModel");
 
 //configure the route to get and send data from database
 router.route("/create").post((req, res) => {
@@ -15,6 +16,18 @@ router.route("/create").post((req, res) => {
 
     newPatient.save();
 });
+
+router.route("/createConsultation").post((req, res) => {
+    const illness = req.body.illness;
+    const diagnosis = req.body.diagnosis;
+    const newConsultation = new Consultation({
+        illness,
+        diagnosis
+    });
+
+    newConsultation.save();
+});
+
 
 //another route to take page to /lists and get data from database
 router.route("/lists").get((req,res) => {
