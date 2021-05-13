@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import PatientListButton from './PatientListButton';
 
 
 function PatientList() {
@@ -37,6 +38,8 @@ function PatientList() {
                     <div className="col-sm">
                         {patients.firstname}
                     </div>
+
+                    <PatientListButton />
                 </div>
             )}
         </div>
