@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from 'react-bootstrap';
 
 function CreateConsultation() {
+    const [input, setInput] = useState({
+        illness: '',
+        diagnosis: ''
+    })
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
+        })
+    }
+
+    function handleClick(event) {
+        event.preventDefault();
+        console.log(input);
+    }
+
     return (
         <div className="container">
-            <h1>CONSULTATION HERE</h1>
+            <h1>CONSULTATION</h1>
+            <form>
+                <div className="row">
+                    <div className="col-sm">
+                        <div className='form-group'>
+                            <input readOnly className='form-control' placeholder="Patient's Last Name"></input>
+                        </div>
+                        <div className='form-group'>
+                            <input readOnly className='form-control' placeholder="Patient's First Name"></input>
+                        </div>
+                        <div className='form-group'>
+                            <input onChange={handleChange} name="illness" value={input.illness} autoComplete="off" className='form-control' placeholder="Presenting Illness"></input>
+                        </div>
+                        <div className='form-group'>
+                            <input onChange={handleChange} name="diagnosis" value={input.diagnosis} autoComplete="off" className='form-control' placeholder="Diagnosis"></input>
+                        </div>
+                    </div>
+                </div>
+                <Button onClick={handleClick} variant="danger">SAVE</Button>
+            </form>
+
         </div>
     )
 }
