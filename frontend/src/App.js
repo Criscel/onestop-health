@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import CreatePatient from "./components/CreatePatient";
 import PatientList from "./components/PatientList";
+import CreateConsultation from "./components/CreateConsultation";
+import ViewPatient from "./components/ViewPatient";
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
 
         <Route path="/create">
           <CreatePatient />
+        </Route>
+
+        <Route path="/createConsultation">
+          <CreateConsultation />
+        </Route>
+
+        <Route path="/viewPatient">
+          <ViewPatient />
         </Route>
 
       </Router>

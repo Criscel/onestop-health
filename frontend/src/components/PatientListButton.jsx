@@ -8,10 +8,11 @@ function PatientListButton() {
 
     return (
         <div className="col-sm">
-            <Button variant="info">View</Button>
+            <Button variant="info" onClick={() => {
+                history.push("/viewPatient")} }>View</Button>
 
             <Button variant="warning" onClick={() => {
-                history.push("/CreateConsultation")} }>Add Consultation</Button>
+                history.push("/createConsultation")} }>Add Consultation</Button>
         </div>
     )
 
