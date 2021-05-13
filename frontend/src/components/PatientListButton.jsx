@@ -1,11 +1,17 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 function PatientListButton() {
+
+    let history = useHistory();
+
     return (
         <div className="col-sm">
-            <button type="button" className="btn btn-info">View</button>
+            <Button variant="info">View</Button>
 
-            <button type="button" className="btn btn-warning">Add Consultation</button>
+            <Button variant="warning" onClick={() => {
+                history.push("/CreateConsultation")} }>Add Consultation</Button>
         </div>
     )
 

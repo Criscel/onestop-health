@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import PatientHeader from './PatientHeader';
 import PatientListButton from './PatientListButton';
 
 
@@ -20,15 +21,7 @@ function PatientList() {
 
     return (
         <div className="container">
-            <h1> Patient List Page </h1>
-            <div className="row">
-                <div className="col-sm">
-                    <h3>Last Name</h3>
-                </div>
-                <div className="col-sm">
-                    <h3>First Name</h3>
-                </div>
-            </div>
+            <PatientHeader />
 
             {lists.map(patients =>
                 <div className="row">
