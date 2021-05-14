@@ -8,10 +8,21 @@ router.route("/create").post((req, res) => {
     const title = req.body.title;
     const lastname = req.body.lastname;
     const firstname = req.body.firstname;
+    const mobile = req.body.mobile;
+    const gender = req.body.gender;
+    const allergies = req.body.allergies;
+    const dob = req.body.dob;
+    const diabetic = req.body.diabetic;
+
     const newPatient = new Patient({
         title,
         lastname,
-        firstname
+        firstname,
+        mobile,
+        gender,
+        allergies,
+        dob,
+        diabetic
     });
 
     newPatient.save();
@@ -36,6 +47,11 @@ router.route("/createConsultation").post((req, res) => {
 router.route("/lists").get((req,res) => {
     Patient.find()
     .then(foundPatients => res.json(foundPatients))
+})
+
+router.route("/lists/_id:").get((req,res) => {
+    Patient.find()
+    .then(foundPatient => res.json(foundPatient))
 })
 
 module.exports = router;
