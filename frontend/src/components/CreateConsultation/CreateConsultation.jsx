@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import "./CreateConsultation.css";
 
 function CreateConsultation() {
 
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
     const showdate = new Date();
-        const date = showdate.getDate() + '/' + (showdate.getMonth()+1) + '/' + showdate.getFullYear();
+         const date = showdate.getDate() +' ' + monthNames[showdate.getMonth()+1] +' '+ showdate.getFullYear();
 
     const [input, setInput] = useState({
         date: date,
@@ -41,14 +45,13 @@ function CreateConsultation() {
 
     return (
         <div className="container">
-            <h1>CONSULTATION</h1>
-            <div>
-            <input type="text" name="date" value={input.date} placeholder={date}></input>
-            </div>
+            <h3>CONSULTATION</h3>
+            
             <form>
-                <div className="row">
+                <div className="row-consult">
                     <div className="col-sm">
                         <div className='form-group'>
+                        <p>{date}</p>
                             <input readOnly className='form-control' placeholder="Patient's Last Name"></input>
                         </div>
                         <div className='form-group'>
@@ -59,10 +62,13 @@ function CreateConsultation() {
                         </div>
                         <div className='form-group'>
                             <input onChange={handleChange} name="diagnosis" value={input.diagnosis} autoComplete="off" className='form-control' placeholder="Diagnosis"></input>
+
+                            <Button onClick={handleClick} variant="danger">SAVE</Button>
                         </div>
+                        
                     </div>
                 </div>
-                <Button onClick={handleClick} variant="danger">SAVE</Button>
+                
             </form>
 
         </div>

@@ -13,7 +13,10 @@ function PatientList() {
 
     const [lists, setLists] = useState([{
         lastname: '',
-        firstname: ''
+        firstname: '',
+        mobile: '',
+        gender: '',
+        dob: ''
     }])
 
     useEffect(() => {

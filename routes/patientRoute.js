@@ -50,7 +50,7 @@ router.route("/lists").get((req,res) => {
 })
 
 router.route("/lists/_id:").get((req,res) => {
-    Patient.find()
+    Patient.find({_id: Patient._id})
     .then(foundPatient => res.json(foundPatient))
 })
 

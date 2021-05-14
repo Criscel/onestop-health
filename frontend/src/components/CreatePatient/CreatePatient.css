@@ -39,6 +39,7 @@ h3 {
 }
 
 Button {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10%;
     float: right;
 }

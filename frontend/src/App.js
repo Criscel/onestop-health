@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home";
 import CreatePatient from "./components/CreatePatient/CreatePatient";
 import PatientList from "./components/PatientList/PatientList";
-import CreateConsultation from "./components/CreateConsultation";
+import CreateConsultation from "./components/CreateConsultation/CreateConsultation";
 import ViewPatient from "./components/ViewPatient";
 
 function App() {

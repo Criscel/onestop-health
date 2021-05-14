@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Col, Form, Row  } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import "./CreatePatient.css";
 
 function CreatePatient() {
@@ -26,6 +26,20 @@ function CreatePatient() {
             }
         })
     }
+
+    function handleTickYes(event){
+        event.preventDefault();
+        const diabetic = "Yes"
+        console.log(diabetic, 'yes');
+    }
+
+    function handleTickNo(event){
+        event.preventDefault();
+        const diabetic = "No"
+        console.log(diabetic, 'no');
+    }
+
+   
 
     function handleClick(event) {
         event.preventDefault();
@@ -87,25 +101,18 @@ function CreatePatient() {
                 <Row>
                     <Col className='form-group' id="diabetic">
                         <p>Diabetic:</p>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="yes" id="defaultCheck1" />
-                                <label className="form-check-label" for="defaultCheck1">
-                                    Yes
-                                </label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes" onChange={handleTickYes}/>
+                            <label className="form-check-label">Yes</label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no" onChange={handleTickNo}/>
+                            <label className="form-check-label">No</label>
                         </div>
 
-                        {/* <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="no" id="defaultCheck1" />
-                                <label class="form-check-label" for="defaultCheck1">
-                                    No
-                                </label>
-                        </div> */}
+                                <Button onClick={handleClick} variant="danger">SAVE</Button>
                     </Col>
                 </Row>
-
-
-                    <Button onClick={handleClick} variant="danger">SAVE</Button>
-
             </Form>
         </div>
     )
