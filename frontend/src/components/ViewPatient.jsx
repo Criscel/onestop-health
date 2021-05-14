@@ -3,7 +3,7 @@ import React from "react";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router";
 // import { Form } from "react-bootstrap";
-import * as Patient from "./PatientList";
+import * as Patient from "./PatientList/PatientList";
 
 function ViewPatient() {
     console.log(Patient)

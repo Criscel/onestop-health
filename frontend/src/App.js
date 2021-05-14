@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home";
 import CreatePatient from "./components/CreatePatient/CreatePatient";
-import PatientList from "./components/PatientList";
+import PatientList from "./components/PatientList/PatientList";
 import CreateConsultation from "./components/CreateConsultation";
 import ViewPatient from "./components/ViewPatient";
 

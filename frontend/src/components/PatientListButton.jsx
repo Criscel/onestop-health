@@ -17,13 +17,17 @@ function PatientListButton() {
     // }
 
     return (
+    <div>
         <div className="col-sm">
-            {/* <Button variant="info" onClick={handleViewCLick}>View</Button> */}
+            <Button variant="info">View</Button>
+        </div>
 
-
+        <div className="col-sm">
             <Button variant="warning" onClick={() => {
                 history.push("/createConsultation")} }>Add Consultation</Button>
         </div>
+
+    </div>
     )
 
 }
