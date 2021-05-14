@@ -6,19 +6,20 @@ function PatientListButton() {
 
     let history = useHistory();
 
-    function handleViewCLick(event) {
+    // function handleViewCLick(event) {
         
-        event.preventDefault();
+    //     event.preventDefault();
         
-        const value = event.target.value;
-        console.log(value);
+    //     const value = event.target.value;
+    //     console.log(value);
 
-        history.push("/viewPatient")
-    }
+    //     history.push("/viewPatient")
+    // }
 
     return (
         <div className="col-sm">
-            <Button variant="info" onCLick={handleViewCLick}>View</Button>
+            {/* <Button variant="info" onClick={handleViewCLick}>View</Button> */}
+
 
             <Button variant="warning" onClick={() => {
                 history.push("/createConsultation")} }>Add Consultation</Button>

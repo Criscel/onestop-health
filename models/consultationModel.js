@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const consultationSchema = {
+    date: Number,
     illness: String,
     diagnosis: String
 }

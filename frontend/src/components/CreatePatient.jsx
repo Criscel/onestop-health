@@ -50,6 +50,9 @@ function CreatePatient() {
                     <div className='form-group'>
                         <input onChange={handleChange} name="firstname" value={input.firstname} autoComplete="off" className='form-control' placeholder="First Name"></input>
                     </div>
+
+                    
+
                 </div>
             </div>
             <Button onClick={handleClick} variant="danger">SAVE</Button>

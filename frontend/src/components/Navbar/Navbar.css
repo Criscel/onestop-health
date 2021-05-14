@@ -1,9 +1,18 @@
+nav {
+    border:2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 .link {
     text-decoration: none;
     color: black;
     border: 2px solid rgb(0, 179, 255);
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
+    align-items: center;
+    display: flex;
+    margin: 0%;
 }
 
 .link:hover {

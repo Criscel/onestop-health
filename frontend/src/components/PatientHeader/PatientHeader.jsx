@@ -1,15 +1,16 @@
 import React from 'react';
+import "./PatientHeader.css";
 
 function PatientHeader() {
     return (
         <div>
-            <h1> Patient List Page </h1>
+            <h3> Patient List Page </h3>
             <div className="row">
                 <div className="col-sm">
-                    <h3>Last Name</h3>
+                    <p>Last Name</p>
                 </div>
                 <div className="col-sm">
-                    <h3>First Name</h3>
+                    <p>First Name</p>
                 </div>
                 <div className="col-sm">
                 </div>

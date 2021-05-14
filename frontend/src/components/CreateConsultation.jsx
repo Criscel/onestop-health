@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import CurrentDate from "./CurrentDate";
 
 function CreateConsultation() {
+
+    const showdate = new Date();
+        const date = showdate.getDate() + '/' + (showdate.getMonth()+1) + '/' + showdate.getFullYear();
+
     const [input, setInput] = useState({
+        date: date,
         illness: '',
         diagnosis: ''
     })
@@ -22,12 +26,15 @@ function CreateConsultation() {
 
     function handleClick(event) {
         event.preventDefault();
-        console.log(input);
+        
+        
 
         const newConsultation = {
+            date: input.date,
             illness: input.illness,
             diagnosis: input.diagnosis
         }
+        console.log(input);
 
         axios.post('http://localhost:3001/createConsultation', newConsultation)
     }
@@ -35,7 +42,9 @@ function CreateConsultation() {
     return (
         <div className="container">
             <h1>CONSULTATION</h1>
-            <CurrentDate />
+            <div>
+            <input type="text" name="date" value={input.date} placeholder={date}></input>
+            </div>
             <form>
                 <div className="row">
                     <div className="col-sm">

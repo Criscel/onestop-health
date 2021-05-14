@@ -18,14 +18,17 @@ router.route("/create").post((req, res) => {
 });
 
 router.route("/createConsultation").post((req, res) => {
+    const date = req.body.date
     const illness = req.body.illness;
     const diagnosis = req.body.diagnosis;
     const newConsultation = new Consultation({
+        date,
         illness,
         diagnosis
     });
 
     newConsultation.save();
+    console.log('save to mongoose!')
 });
 
 
