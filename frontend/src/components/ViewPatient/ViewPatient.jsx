@@ -1,5 +1,6 @@
 // import axios from "axios";
 import React from "react";
+import Navbar from "../Navbar/Navbar";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router";
 // import { Form } from "react-bootstrap";
@@ -10,8 +11,11 @@ import "./ViewPatient.css";
 function ViewPatient() {
     console.log(Patient)
     return (
-        <div>
+        <div className="container">
+            <Navbar />
+            <div className="header">
             <h3>PATIENT DATA</h3>
+            </div>
         </div>
     )
 

@@ -6,6 +6,7 @@ import PatientHeader from '../PatientHeader/PatientHeader';
 import { useHistory } from "react-router-dom";
 
 import "./PatientList.css";
+import Navbar from '../Navbar/Navbar';
 
 
 function PatientList() {
@@ -36,6 +37,7 @@ function PatientList() {
 
     return (
         <div className="container-list">
+            <Navbar />
             <PatientHeader />
 
             {lists.map(patients =>

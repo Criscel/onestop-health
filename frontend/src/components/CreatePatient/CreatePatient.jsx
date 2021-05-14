@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import "./CreatePatient.css";
+import Navbar from '../Navbar/Navbar';
 
 function CreatePatient() {
     const [input, setInput] = useState({
@@ -60,6 +61,7 @@ function CreatePatient() {
     }
     return (
         <div className="container">
+            <Navbar />
             <h3> Create Patient Page </h3>
 
             <Form>
