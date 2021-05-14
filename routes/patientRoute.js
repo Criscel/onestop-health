@@ -42,7 +42,6 @@ router.route("/createConsultation").post((req, res) => {
     console.log('save to mongoose!')
 });
 
-
 //another route to take page to /lists and get data from database
 router.route("/lists").get((req,res) => {
     Patient.find()

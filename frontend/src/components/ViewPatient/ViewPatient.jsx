@@ -3,13 +3,15 @@ import React from "react";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router";
 // import { Form } from "react-bootstrap";
-import * as Patient from "./PatientList/PatientList";
+import * as Patient from "../PatientList/PatientList";
+
+import "./ViewPatient.css";
 
 function ViewPatient() {
     console.log(Patient)
     return (
         <div>
-            <h1>PATIENT DATA</h1>
+            <h3>PATIENT DATA</h3>
         </div>
     )
 

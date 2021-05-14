@@ -61,21 +61,23 @@ function PatientList() {
                     </Button> */}
 
                     <div className="col-sm">
-                        <p type="button" className="view">View</p>
+                        <p type="button" className="view" 
+                        onClick={() => {
+                            history.push("/viewPatient")}}>View</p>
                     </div>
 
                     <div className="col-sm">
-                        <p type="button" className="consult" onClick={() => {
-                            history.push("/createConsultation")
-                        }}>Add Consult</p>
-                    </div>
+                            <p type="button" className="consult" onClick={() => {
+                                history.push("/createConsultation")
+                            }}>Add Consult</p>
+                        </div>
 
-                    {/* <PatientListButton /> */}
-                </div>
+                        {/* <PatientListButton /> */}
+                    </div>
             )}
         </div>
-    )
+            )
 
-}
+            }
 
 export default PatientList;
