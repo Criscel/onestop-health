@@ -16,7 +16,7 @@
     z-index: 1;
 }
 
-button {
+.loginBtn {
     color:white;
     background: rgb(0, 157, 255);
     border: 2px solid rgb(0, 157, 255);

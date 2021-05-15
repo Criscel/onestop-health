@@ -1,5 +1,6 @@
 // import axios from "axios";
 import React from "react";
+import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router";
@@ -9,16 +10,20 @@ import * as Patient from "../PatientList/PatientList";
 import "./ViewPatient.css";
 
 function ViewPatient() {
+
+    const { isAuthenticated } = useAuth0();
+
     console.log(Patient)
     return (
-        <div className="container">
-            <Navbar />
-            <div className="header">
-            <h3>PATIENT DATA</h3>
+        isAuthenticated && (
+            <div className="container">
+                <Navbar />
+                <div className="header">
+                    <h3>PATIENT DATA</h3>
+                </div>
             </div>
-        </div>
+        )
     )
-
 }
 
 // function ViewPatient() {
@@ -48,7 +53,7 @@ function ViewPatient() {
 //         loadPatient();
 //     }, []);
 
-    
+
 
 //     return (
 //         <div className="container">

@@ -7,7 +7,7 @@ const patientsSchema = {
     mobile: Number,
     gender: String,
     allergies: String,
-    dob: Number,
+    dob: String,
     diabetic: String,
 }
 

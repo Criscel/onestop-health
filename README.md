@@ -10,7 +10,7 @@
 
 
  ## Credits
- Auth0
+ Auth0 (https://auth0.com/blog/complete-guide-to-react-user-authentication/)
  Auth0 OpenId (https://github.com/auth0/express-openid-connect)
  Sass
  React-Bootstrap

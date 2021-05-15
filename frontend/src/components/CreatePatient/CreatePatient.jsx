@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import "./CreatePatient.css";
 import Navbar from '../Navbar/Navbar';
 
 function CreatePatient() {
+    const { isAuthenticated } = useAuth0();
+    
     const [input, setInput] = useState({
         title: '',
         lastname: '',
@@ -60,6 +63,8 @@ function CreatePatient() {
         axios.post('http://localhost:3001/create', newPatient)
     }
     return (
+        isAuthenticated && (
+
         <div className="container">
             <Navbar />
             <h3> Create Patient Page </h3>
@@ -117,6 +122,7 @@ function CreatePatient() {
                 </Row>
             </Form>
         </div>
+        )
     )
 }
 

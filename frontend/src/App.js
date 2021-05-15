@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth0 } from '@auth0/auth0-react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
@@ -9,16 +10,19 @@ import ViewPatient from "./components/ViewPatient/ViewPatient";
 import Login from "./components/Login/Login";
 
 function App() {
+  const { isLoading } = useAuth0();  
+
+  if (isLoading) return <div>Loading... </div>
+
   return (
     <div>
-      <Router>
-        {/* <Navbar /> */}
 
-        <Route path="/" exact>
+      <Router>
+      <Route path="/" exact>
           <Login />
         </Route>
 
-        <Route path="/home" exact>
+        <Route path="/" exact>
           <Home />
         </Route>
 
