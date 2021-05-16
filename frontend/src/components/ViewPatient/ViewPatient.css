@@ -3,3 +3,11 @@ h3 {
     padding: 3% 0 10px 0;
     color: rgb(196, 26, 111);
 }
+
+.patient {
+    margin-bottom: 20px;
+}
+
+.patientBtn {
+    margin-left: 10px;
+}
