@@ -10,6 +10,8 @@ import Navbar from '../Navbar/Navbar';
 function CreatePatient() {
     const { isAuthenticated } = useAuth0();
 
+    const [diabetic, setDiabetic] = useState(false);
+
     const [date, setDate] = useState();
 
     const [input, setInput] = useState({
@@ -35,26 +37,6 @@ function CreatePatient() {
         })
     }
 
-
-     function handleCheckbox(){
-
-        let diabetic = input.diabetic;
-
-        if (diabetic === "Yes") {
-            diabetic = "No";
-        } else if (diabetic === 'No') 
-        {
-            diabetic = " ";
-        } else {
-            diabetic = "Yes";
-        }
-        setInput({
-            diabetic
-        });
-    };
-
-
-
     function handleClick(event) {
         event.preventDefault();
         console.log(input);
@@ -72,11 +54,12 @@ function CreatePatient() {
             mobile: input.mobile,
             allergies: input.allergies,
             dob: formattedDate,
-            diabetic: input.diabetic
+            diabetic: diabetic
         }
 
         axios.post('http://localhost:3001/create', newPatient)
     }
+
     return (
         isAuthenticated && (
 
@@ -126,20 +109,10 @@ function CreatePatient() {
 
                     <Row>
                         <Col className='form-group' id="diabetic">
-                            <p>Diabetic:</p>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" checked={input.diabetic === "Yes"} onChange={handleCheckbox}/>
-                                <label className="form-check-label">Yes</label>
-                                {console.log(input.diabetic)}
-                            </div>
-
-                            {/* <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" checked={input.diabetic === "No"} onChange={handleCheckbox}/>
-                                <label className="form-check-label">No</label>
-                                {console.log(input.diabetic)}
-                            </div> */}
-
-
+                            <p>Diabetic: {diabetic ? "Yes" : "No"}</p>
+                            <input type="checkbox" checked={diabetic} onChange={(event) => {setDiabetic(event.target.checked)}}></input>
+                            <label> Yes</label>
+                            {console.log(diabetic)}
                             <Button onClick={handleClick} variant="danger">SAVE</Button>
                         </Col>
                     </Row>

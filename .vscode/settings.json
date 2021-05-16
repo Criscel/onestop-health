@@ -1,8 +1,11 @@
 {
     "cSpell.ignoreWords": [
+        "dropdown",
         "firstname",
         "lastname",
-        "moongose"
+        "moongose",
+        "scrollable",
+        "year"
     ],
     "cSpell.words": [
         "showdate"
