@@ -10,7 +10,7 @@ import Navbar from '../Navbar/Navbar';
 function CreatePatient() {
     const { isAuthenticated } = useAuth0();
 
-    const [date, setDate] = useState({dob: ''});
+    const [date, setDate] = useState();
     
     const [input, setInput] = useState({
         title: '',
@@ -19,7 +19,7 @@ function CreatePatient() {
         gender: '',
         mobile: '',
         allergies: '',
-        // dob: '',
+        dob: '',
         diabetic: ''
     })
 
@@ -34,12 +34,12 @@ function CreatePatient() {
             }
         })
 
-        setDate(prevInput => {
-            return {
-                ...prevInput,
-                [name]: value
-            }
-        })
+        // setDate(prevInput => {
+        //     return {
+        //         ...prevInput,
+        //         [name]: value
+        //     }
+        // })
     }
 
 
@@ -57,7 +57,12 @@ function CreatePatient() {
 
     function handleClick(event) {
         event.preventDefault();
-        console.log(input,date);
+        console.log(input);
+
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const formattedDate = date.getDate()+' '+monthNames[date.getMonth() + 1]+' '+date.getFullYear();
 
         const newPatient = {
             title: input.title,
@@ -66,7 +71,7 @@ function CreatePatient() {
             gender: input.gender,
             mobile: input.mobile,
             allergies: input.allergies,
-            dob: date.dob,
+            dob: formattedDate,
             diabetic: input.diabetic
         }
 
@@ -88,8 +93,8 @@ function CreatePatient() {
 
                     <Col className='form-group' id="dob">
                         <label>Date of Birth</label>
-                        <DatePicker name="dob" dateFormat='dd MMM yyyy' showYearDropdown scrollableYearDropdown selected={date}
-                        onChange={date => setDate(date)} value={date.dob}/>
+                        <DatePicker name="" dateFormat='dd MMM yyyy' showYearDropdown scrollableYearDropdown selected={date}
+                        onChange={date => setDate(date)} value={date}/>
                         {console.log(date)}
                     </Col>
                 </Row>
