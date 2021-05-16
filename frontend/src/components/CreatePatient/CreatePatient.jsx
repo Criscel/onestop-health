@@ -11,7 +11,7 @@ function CreatePatient() {
     const { isAuthenticated } = useAuth0();
 
     const [date, setDate] = useState();
-    
+
     const [input, setInput] = useState({
         title: '',
         lastname: '',
@@ -33,36 +33,36 @@ function CreatePatient() {
                 [name]: value
             }
         })
-
-        // setDate(prevInput => {
-        //     return {
-        //         ...prevInput,
-        //         [name]: value
-        //     }
-        // })
     }
 
 
-    function handleTickYes(event){
-        event.preventDefault();
-        const diabetic = "Yes"
-        console.log(diabetic, 'yes');
-    }
+     function handleCheckbox(){
 
-    function handleTickNo(event){
-        event.preventDefault();
-        const diabetic = "No"
-        console.log(diabetic, 'no');
-    }
+        let diabetic = input.diabetic;
+
+        if (diabetic === "Yes") {
+            diabetic = "No";
+        } else if (diabetic === 'No') 
+        {
+            diabetic = " ";
+        } else {
+            diabetic = "Yes";
+        }
+        setInput({
+            diabetic
+        });
+    };
+
+
 
     function handleClick(event) {
         event.preventDefault();
         console.log(input);
 
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        const formattedDate = date.getDate()+' '+monthNames[date.getMonth() + 1]+' '+date.getFullYear();
+        const formattedDate = date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
 
         const newPatient = {
             title: input.title,
@@ -80,67 +80,71 @@ function CreatePatient() {
     return (
         isAuthenticated && (
 
-        <div className="container">
-            <Navbar />
-            <h3> Create Patient Page </h3>
+            <div className="container">
+                <Navbar />
+                <h3> Create Patient Page </h3>
 
-            <Form>
-                <Row>
-                    <Col xs={1} className='form-group' id="title">
-                        <label>Title</label>
-                        <input onChange={handleChange} name="title" value={input.title} autoComplete="off" className='form-control' placeholder="Title"></input>
-                    </Col>
+                <Form>
+                    <Row>
+                        <Col xs={1} className='form-group' id="title">
+                            <label>Title</label>
+                            <input onChange={handleChange} name="title" value={input.title} autoComplete="off" className='form-control' placeholder="Title"></input>
+                        </Col>
 
-                    <Col className='form-group' id="dob">
-                        <label>Date of Birth</label>
-                        <DatePicker name="" dateFormat='dd MMM yyyy' showYearDropdown scrollableYearDropdown selected={date}
-                        onChange={date => setDate(date)} value={date}/>
-                        {console.log(date)}
-                    </Col>
-                </Row>
+                        <Col className='form-group' id="dob">
+                            <label>Date of Birth</label>
+                            <DatePicker name="" dateFormat='dd MMM yyyy' showYearDropdown scrollableYearDropdown selected={date}
+                                onChange={date => setDate(date)} value={date} />
+                            {console.log(date)}
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col xs={5} className='form-group' id="lastname">
-                        <input onChange={handleChange} name="lastname" value={input.lastname} autoComplete="off" className='form-control' placeholder="Last Name"></input>
-                    </Col>
+                    <Row>
+                        <Col xs={5} className='form-group' id="lastname">
+                            <input onChange={handleChange} name="lastname" value={input.lastname} autoComplete="off" className='form-control' placeholder="Last Name"></input>
+                        </Col>
 
-                    <Col className='form-group' id="gender">
-                        <input onChange={handleChange} name="gender" value={input.gender} autoComplete="off" className='form-control' placeholder="Gender"></input>
-                    </Col>
-                </Row>
+                        <Col className='form-group' id="gender">
+                            <input onChange={handleChange} name="gender" value={input.gender} autoComplete="off" className='form-control' placeholder="Gender"></input>
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col xs={5} className='form-group' id="firstname">
-                        <input onChange={handleChange} name="firstname" value={input.firstname} autoComplete="off" className='form-control' placeholder="First Name"></input>
-                    </Col>
-                    <Col className='form-group' id="mobile">
-                        <input onChange={handleChange} name="mobile" value={input.mobile} autoComplete="off" className='form-control' placeholder="Mobile"></input>
-                    </Col>
-                </Row>
+                    <Row>
+                        <Col xs={5} className='form-group' id="firstname">
+                            <input onChange={handleChange} name="firstname" value={input.firstname} autoComplete="off" className='form-control' placeholder="First Name"></input>
+                        </Col>
+                        <Col className='form-group' id="mobile">
+                            <input onChange={handleChange} name="mobile" value={input.mobile} autoComplete="off" className='form-control' placeholder="Mobile"></input>
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col className='form-group' id="allergies">
-                        <input onChange={handleChange} name="allergies" value={input.allergies} autoComplete="off" className='form-control' placeholder="Allergies"></input>
-                    </Col>
-                </Row>
+                    <Row>
+                        <Col className='form-group' id="allergies">
+                            <input onChange={handleChange} name="allergies" value={input.allergies} autoComplete="off" className='form-control' placeholder="Allergies"></input>
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col className='form-group' id="diabetic">
-                        <p>Diabetic:</p>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes" onChange={handleTickYes}/>
-                            <label className="form-check-label">Yes</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no" onChange={handleTickNo}/>
-                            <label className="form-check-label">No</label>
-                        </div>
+                    <Row>
+                        <Col className='form-group' id="diabetic">
+                            <p>Diabetic:</p>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" checked={input.diabetic === "Yes"} onChange={handleCheckbox}/>
+                                <label className="form-check-label">Yes</label>
+                                {console.log(input.diabetic)}
+                            </div>
 
-                                <Button onClick={handleClick} variant="danger">SAVE</Button>
-                    </Col>
-                </Row>
-            </Form>
-        </div>
+                            {/* <div className="form-check form-check-inline">
+                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" checked={input.diabetic === "No"} onChange={handleCheckbox}/>
+                                <label className="form-check-label">No</label>
+                                {console.log(input.diabetic)}
+                            </div> */}
+
+
+                            <Button onClick={handleClick} variant="danger">SAVE</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </div>
         )
     )
 }
