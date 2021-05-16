@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./CreatePatient.css";
 import Navbar from '../Navbar/Navbar';
 
-function CreatePatient() {
+function EditPatient() {
     const { isAuthenticated } = useAuth0();
-
-    let history = useHistory();
 
     const [diabetic, setDiabetic] = useState(false);
 
@@ -61,7 +58,10 @@ function CreatePatient() {
         }
 
         axios.post('http://localhost:3001/create', newPatient)
-        history.push("/lists")
+    }
+
+    function loadPatient() {
+
     }
 
     return (
@@ -69,7 +69,7 @@ function CreatePatient() {
 
             <div className="container">
                 <Navbar />
-                <h3> Create Patient Page </h3>
+                <h3> Edit Patient Page </h3>
 
                 <Form>
                     <Row>
@@ -117,7 +117,7 @@ function CreatePatient() {
                             <input type="checkbox" checked={diabetic} onChange={(event) => {setDiabetic(event.target.checked)}}></input>
                             <label> Yes</label>
                             {console.log(diabetic)}
-                            <Button onClick={handleClick} variant="danger">SAVE</Button>
+                            <Button onClick={handleClick} variant="warning">UPDATE</Button>
                         </Col>
                     </Row>
                 </Form>
@@ -126,4 +126,4 @@ function CreatePatient() {
     )
 }
 
-export default CreatePatient;
+export default EditPatient;

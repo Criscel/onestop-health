@@ -37,7 +37,7 @@ function App() {
           <CreateConsultation />
         </Route>
 
-        <Route path="/viewPatient">
+        <Route path="/viewPatient/:id">
           <ViewPatient />
         </Route>
 

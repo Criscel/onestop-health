@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import "./PatientList.css";
 import Navbar from '../Navbar/Navbar';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 function PatientList() {
@@ -15,29 +15,33 @@ function PatientList() {
 
     let history = useHistory();
 
-    const [lists, setLists] = useState([{
-        lastname: '',
-        firstname: '',
-        mobile: '',
-        gender: '',
-        dob: ''
-    }])
+    // const [lists, setLists] = useState([{
+    //     lastname: '',
+    //     firstname: '',
+    //     mobile: '',
+    //     gender: '',
+    //     dob: ''
+    // }])
+
+    // useEffect(() => {
+    //     fetch("/lists").then(res => {
+    //         if (res.ok) {
+    //             // console.log(res);
+    //             return res.json()
+    //         }
+    //     }).then(jsonRes => setLists(jsonRes));
+    // })
+
+    const [lists, setLists] = useState([]);
 
     useEffect(() => {
-        fetch("/lists").then(res => {
-            if (res.ok) {
-                // console.log(res);
-                return res.json()
-            }
-        }).then(jsonRes => setLists(jsonRes));
-    })
+        loadPatients();
+      }, []);
 
-    //  handleViewClick = (event) => {
-    //      event.preventDefault();
-    //     // const { name } = event.target;
-    //     console.log(event.target.name, 'handle view click',);
-    // }
-    
+      const loadPatients = async () => {
+        const result = await axios.get("http://localhost:3001/lists");
+        setLists(result.data);
+      };
 
     return (
         isAuthenticated && (
@@ -64,11 +68,9 @@ function PatientList() {
                         </div>
 
                         <div className="col-sm">
-                            {/* <p type="button" className="view"
-                                onClick={() => {
-                                    history.push("/viewPatient")
-                                }}>View</p> */}
-                                <p type="button" className="view">View</p> 
+                                <p type="button" className="view" onClick={() => {
+                                    history.push(`/viewPatient/${patients._id}`)
+                                }}>View</p> 
                         </div>
 
                         <div className="col-sm">

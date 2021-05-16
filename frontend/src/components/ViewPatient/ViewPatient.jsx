@@ -1,11 +1,10 @@
-// import axios from "axios";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState }  from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router";
+import { useParams } from "react-router";
 // import { Form } from "react-bootstrap";
-import * as Patient from "../PatientList/PatientList";
+
 
 import "./ViewPatient.css";
 
@@ -13,13 +12,33 @@ function ViewPatient() {
 
     const { isAuthenticated } = useAuth0();
 
-    console.log(Patient)
+    const [patient, setPatient] = useState({
+        lastname: '',
+        firstname: '',
+        mobile: '',
+        gender: '',
+        dob: ''
+    })
+
+    const { _id } = useParams();
+
+    useEffect(() => {
+        loadPatient();
+    }, []);
+
+    const loadPatient = async () => {
+        const result = await axios.get(`http://localhost:3001/lists/${_id}`);
+        setPatient(result.data)
+        console.log(result)
+    };
+
     return (
         isAuthenticated && (
             <div className="container">
                 <Navbar />
                 <div className="header">
                     <h3>PATIENT DATA</h3>
+                    <h1 className="display-4">Patient Id: {_id}</h1>
                 </div>
             </div>
         )
