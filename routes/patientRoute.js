@@ -48,9 +48,17 @@ router.route("/lists").get((req,res) => {
     .then(foundPatients => res.json(foundPatients))
 })
 
-router.route("/lists/_id:").get((req,res) => {
-    Patient.find({_id: Patient._id})
+//select specific patient by id
+router.route("/:id").get((req,res) => {
+    Patient.findById(req.params.id)
     .then(foundPatient => res.json(foundPatient))
 })
+
+//delete specific patient
+router.route("/:id").delete((req,res) => {
+    Patient.findByIdAndDelete(req.params.id)
+    .then(() => res.json(patientDeleted))
+})
+
 
 module.exports = router;

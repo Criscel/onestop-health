@@ -17,5 +17,5 @@
  React-Bootstrap
  Axios
  Express
- Mongoose
+ Mongoose (https://mongoosejs.com/)
  Cors

@@ -3,7 +3,7 @@ import React, { useEffect, useState }  from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router";
-// import { Form } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 
 
 import "./ViewPatient.css";
@@ -13,21 +13,24 @@ function ViewPatient() {
     const { isAuthenticated } = useAuth0();
 
     const [patient, setPatient] = useState({
+        title: '',
         lastname: '',
         firstname: '',
-        mobile: '',
         gender: '',
-        dob: ''
+        mobile: '',
+        allergies: '',
+        dob: '',
+        diabetic: ''
     })
 
-    const { _id } = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
         loadPatient();
     }, []);
 
     const loadPatient = async () => {
-        const result = await axios.get(`http://localhost:3001/lists/${_id}`);
+        const result = await axios.get(`http://localhost:3001/${id}`);
         setPatient(result.data)
         console.log(result)
     };
@@ -38,60 +41,62 @@ function ViewPatient() {
                 <Navbar />
                 <div className="header">
                     <h3>PATIENT DATA</h3>
-                    <h1 className="display-4">Patient Id: {_id}</h1>
+                    <div className="container-view">
+                        <Form>
+                            <Row>
+                            <Col xs={3}>
+                            <label>Patient Id:</label>
+                            <input className='form-control' value={id} placeholder={id} readOnly></input>
+                            </Col>
+                            </Row>
+                            
+                            <Row>
+                            <Col>
+                            <label>Title: </label>
+                            <input className='form-control' value={patient.title} placeholder={patient.title} readOnly></input>
+                            </Col>
+                            <Col>
+                            <label>Last Name: </label>
+                            <input className='form-control' value={patient.lastname} placeholder={patient.lastname} readOnly></input>
+                            </Col>
+                            <Col>
+                            <label>First Name: </label>
+                            <input className='form-control' value={patient.firstname} placeholder={patient.firstname} readOnly></input>
+                            </Col>
+                            </Row>
+
+                            <Row>
+                            <Col>
+                            <label>Date of Birth: </label>
+                            <input className='form-control' value={patient.dob} placeholder={patient.dob} readOnly></input>
+                            </Col>
+                            <Col>
+                            <label>Gender: </label>
+                            <input className='form-control' value={patient.gender} placeholder={patient.gender} readOnly></input>
+                            </Col>
+                            <Col>
+                            <label>Mobile: </label>
+                            <input className='form-control' value={patient.mobile} placeholder={patient.mobile} readOnly></input>
+                            </Col>
+                            </Row>
+
+                            <Row>
+                            <Col>
+                            <label>Allergies: </label>
+                            <input className='form-control' value={patient.allergies} placeholder={patient.allergies} readOnly></input>
+                            </Col>
+                            <Col xs={3}>
+                            <label>Diabetic: </label>
+                            <input className='form-control' value={patient.diabetic} placeholder={patient.diabetic} readOnly></input>
+                            </Col>
+                            </Row>
+                            
+                        </Form>
+                    </div>
                 </div>
             </div>
         )
     )
 }
-
-// function ViewPatient() {
-//     const [patient, setPatient] = useState([{
-//         title:'',
-//         lastname: '',
-//         firstname: ''
-//     }]);
-
-//     // useEffect(() => {
-//     //     fetch("/lists/$").then(res => {
-//     //         if (res.ok) {
-//     //             // console.log(res);
-//     //             return res.json()
-//     //         }
-//     //     }).then(jsonRes => setLists(jsonRes));
-//     // })
-
-//     const { lastname } = useParams();
-//     useEffect(() => {
-//         const loadPatient = async () => {
-//             const res = await axios.get(`http://localhost:3001/lists/${lastname}`);
-//             setPatient(res.data);
-//             console.log(res,"view patient");
-//         };
-
-//         loadPatient();
-//     }, []);
-
-
-
-//     return (
-//         <div className="container">
-//             {/* {lists.map(patients => */}
-//                 <div className="row">
-//                     <div className="col-sm">
-//                         {patient.title}
-//                     </div>
-//                     <div className="col-sm">
-//                         {patient.lastname}
-//                     </div>
-//                     <div className="col-sm">
-//                         {patient.firstname}
-//                     </div>
-
-//                 </div>
-//             {/* )} */}
-//         </div>
-//     )
-// }
 
 export default ViewPatient;

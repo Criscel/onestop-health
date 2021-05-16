@@ -15,23 +15,6 @@ function PatientList() {
 
     let history = useHistory();
 
-    // const [lists, setLists] = useState([{
-    //     lastname: '',
-    //     firstname: '',
-    //     mobile: '',
-    //     gender: '',
-    //     dob: ''
-    // }])
-
-    // useEffect(() => {
-    //     fetch("/lists").then(res => {
-    //         if (res.ok) {
-    //             // console.log(res);
-    //             return res.json()
-    //         }
-    //     }).then(jsonRes => setLists(jsonRes));
-    // })
-
     const [lists, setLists] = useState([]);
 
     useEffect(() => {
