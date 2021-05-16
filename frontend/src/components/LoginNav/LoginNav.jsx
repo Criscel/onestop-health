@@ -6,7 +6,7 @@ import "./LoginNav.css"
 
 function LoginNav() {
 
-    const { isAuthenticated } = useAuth0();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     return (
         !isAuthenticated && (
@@ -16,7 +16,7 @@ function LoginNav() {
                 <Link className="link" to="/">Home</Link>
                 <Link className="link" to="/lists">Patient List</Link>
                 <Link className="link" to="/create">Create Patient</Link>
-                <Link className="link" to="/">Login</Link>
+                <Link className="link" to="/" onClick={() => loginWithRedirect()}>Login</Link>
             </Router>
             </nav>
         )

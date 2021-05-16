@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import "./CreatePatient.css";
 import Navbar from '../Navbar/Navbar';
 
 function CreatePatient() {
     const { isAuthenticated } = useAuth0();
+
+    const [date, setDate] = useState({dob: ''});
     
     const [input, setInput] = useState({
         title: '',
@@ -15,7 +19,7 @@ function CreatePatient() {
         gender: '',
         mobile: '',
         allergies: '',
-        dob: '',
+        // dob: '',
         diabetic: ''
     })
 
@@ -29,7 +33,15 @@ function CreatePatient() {
                 [name]: value
             }
         })
+
+        setDate(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
+        })
     }
+
 
     function handleTickYes(event){
         event.preventDefault();
@@ -43,11 +55,9 @@ function CreatePatient() {
         console.log(diabetic, 'no');
     }
 
-   
-
     function handleClick(event) {
         event.preventDefault();
-        console.log(input);
+        console.log(input,date);
 
         const newPatient = {
             title: input.title,
@@ -56,7 +66,7 @@ function CreatePatient() {
             gender: input.gender,
             mobile: input.mobile,
             allergies: input.allergies,
-            dob: input.dob,
+            dob: date.dob,
             diabetic: input.diabetic
         }
 
@@ -72,11 +82,15 @@ function CreatePatient() {
             <Form>
                 <Row>
                     <Col xs={1} className='form-group' id="title">
+                        <label>Title</label>
                         <input onChange={handleChange} name="title" value={input.title} autoComplete="off" className='form-control' placeholder="Title"></input>
                     </Col>
 
                     <Col className='form-group' id="dob">
-                        <input onChange={handleChange} name="dob" value={input.dob} autoComplete="off" className='form-control' placeholder="Date of Birth"></input>
+                        <label>Date of Birth</label>
+                        <DatePicker name="dob" dateFormat='dd MMM yyyy' showYearDropdown scrollableYearDropdown selected={date}
+                        onChange={date => setDate(date)} value={date.dob}/>
+                        {console.log(date)}
                     </Col>
                 </Row>
 

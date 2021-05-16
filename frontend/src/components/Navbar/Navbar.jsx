@@ -16,7 +16,7 @@ function Navbar() {
                 <Link className="link" to="/">Home</Link>
                 <Link className="link" to="/lists">Patient List</Link>
                 <Link className="link" to="/create">Create Patient</Link>
-                <Link className="link" onClick={() => logout()}>Logout</Link>
+                <Link className="link" to="/" onClick={() => logout()}>Logout</Link>
                 </Router>
             </nav>
         )

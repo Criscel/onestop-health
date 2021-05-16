@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import "./PatientList.css";
 import Navbar from '../Navbar/Navbar';
+// import axios from 'axios';
 
 
 function PatientList() {
@@ -36,6 +37,7 @@ function PatientList() {
     //     // const { name } = event.target;
     //     console.log(event.target.name, 'handle view click',);
     // }
+    
 
     return (
         isAuthenticated && (
@@ -62,10 +64,11 @@ function PatientList() {
                         </div>
 
                         <div className="col-sm">
-                            <p type="button" className="view"
+                            {/* <p type="button" className="view"
                                 onClick={() => {
                                     history.push("/viewPatient")
-                                }}>View</p>
+                                }}>View</p> */}
+                                <p type="button" className="view">View</p> 
                         </div>
 
                         <div className="col-sm">
