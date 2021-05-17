@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, FormLabel, InputGroup, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 
 import "./ViewPatient.css";
+import FormFileInput from "react-bootstrap/esm/FormFileInput";
 
 function ViewPatient() {
 
@@ -27,7 +28,7 @@ function ViewPatient() {
     })
 
     const { id } = useParams();
-    console.log({id});
+    console.log({ id });
 
     useEffect(() => {
         loadPatient();
@@ -41,7 +42,7 @@ function ViewPatient() {
 
     return (
         isAuthenticated && (
-            <div className="container">
+            <div className="container-view">
                 <Navbar />
                 <div className="header">
                     <h3>PATIENT DATA</h3>
@@ -97,16 +98,23 @@ function ViewPatient() {
 
                             <Button className="patientBtn" variant="danger">DELETE</Button>
 
-                            <div className="col-sm">
-                            <p type="button" className="consult" onClick={() => {
+                            <Button className="patientBtn" variant="warning" onClick={() => {
                                 history.push(`/editPatient/${id}`)
-                            }}>EDIT</p>
-                        </div>
+                            }}>EDIT</Button>
 
                         </Form>
                     </div>
                 </div>
-            </div>
+                <div className="header-consult">
+                    <h3>CONSULTATION HISTORY</h3>
+                </div>
+                <Form className="form-consult">
+                    <Col xs={3}>
+                    <label>Date: </label>
+                       <input className='form-control'></input>    
+                    </Col>
+                </Form>
+            </div >
         )
     )
 }

@@ -4,10 +4,20 @@ h3 {
     color: rgb(196, 26, 111);
 }
 
+.container-view {
+    margin: 10px 10% 10% 10%;
+}
+
 .patient {
     margin-bottom: 20px;
 }
 
 .patientBtn {
     margin-left: 10px;
+}
+
+.header-consult {
+    margin-top: 10%;
+    align-items: center;
+    text-align: center;
 }
