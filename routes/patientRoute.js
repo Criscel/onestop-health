@@ -62,20 +62,21 @@ router.route("/lists").get((req,res) => {
 router.route("/:id").get((req,res) => {
     Patient.findById(req.params.id)
     .then(foundPatient => res.json(foundPatient))
-})
+});
 
 
 router.route("/:id").get((req,res) => {
     Consultation.findById(req.params.id)
     .then(foundPatient => res.json(foundPatient))
-})
+});
 
 //delete specific patient
 router.route("/:id").delete((req,res) => {
     Patient.findByIdAndDelete(req.params.id)
     .then(() => res.json('Patient deleted.'))
-})
+});
 
+// update specific patient
 router.route("/update/:id").put((req,res) => {
     Patient.findById(req.params.id)
     .then(patient => {

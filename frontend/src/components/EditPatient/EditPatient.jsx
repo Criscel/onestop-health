@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./EditPatient.css";
@@ -10,8 +10,6 @@ import Navbar from '../Navbar/Navbar';
 
 function EditPatient() {
     const { isAuthenticated } = useAuth0();
-
-    let history = useHistory();
 
     const [diabetic, setDiabetic] = useState(false);
 
@@ -67,8 +65,7 @@ function EditPatient() {
         }
 
         axios.put(`http://localhost:3001/update/${id}`, updatedPatient)
-        // history.push(`/viewPatient/${id}`)
-        history.push(`/lists`)
+        alert('Patient '+ input.title + ' ' +input.firstname + ' ' +input.lastname +' is Updated!')
         console.log(updatedPatient,"updated patient");
     }
 
