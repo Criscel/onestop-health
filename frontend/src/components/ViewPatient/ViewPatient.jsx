@@ -3,12 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router";
-import { Button, Col, Form, FormLabel, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 
 import "./ViewPatient.css";
-import FormFileInput from "react-bootstrap/esm/FormFileInput";
 
 function ViewPatient() {
 
@@ -39,6 +38,11 @@ function ViewPatient() {
         setPatient(result.data)
         console.log(result)
     };
+
+    const deletePatient = async () => {
+        await axios.delete(`http://localhost:3001/${id}`);
+        history.push("/lists")
+    }
 
     return (
         isAuthenticated && (
@@ -96,7 +100,7 @@ function ViewPatient() {
                                 </Col>
                             </Row>
 
-                            <Button className="patientBtn" variant="danger">DELETE</Button>
+                            <Button className="patientBtn" variant="danger" onClick={deletePatient} >DELETE</Button>
 
                             <Button className="patientBtn" variant="warning" onClick={() => {
                                 history.push(`/editPatient/${id}`)
@@ -112,6 +116,10 @@ function ViewPatient() {
                     <Col xs={3}>
                     <label>Date: </label>
                        <input className='form-control'></input>    
+                    </Col>
+                    <Col>
+                    <label>Consultant</label>
+
                     </Col>
                 </Form>
             </div >

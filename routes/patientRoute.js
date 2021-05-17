@@ -64,6 +64,7 @@ router.route("/:id").get((req,res) => {
     .then(foundPatient => res.json(foundPatient))
 })
 
+
 router.route("/:id").get((req,res) => {
     Consultation.findById(req.params.id)
     .then(foundPatient => res.json(foundPatient))
@@ -72,14 +73,53 @@ router.route("/:id").get((req,res) => {
 //delete specific patient
 router.route("/:id").delete((req,res) => {
     Patient.findByIdAndDelete(req.params.id)
-    .then(() => res.json(patientDeleted))
+    .then(() => res.json('Patient deleted.'))
 })
 
-router.route("/:id").put((req,res) => {
+router.route("/update/:id").put((req,res) => {
     Patient.findById(req.params.id)
-    .then(foundPatient => res.json(foundPatient))
-    console.log(foundPatient)
-})
+    .then(patient => {
+    patient.title = req.body.title;
+    patient.lastname = req.body.lastname;
+    patient.firstname = req.body.firstname;
+    patient.mobile = req.body.mobile;
+    patient.gender = req.body.gender;
+    patient.allergies = req.body.allergies;
+    patient.dob = req.body.dob;
+    patient.diabetic = req.body.diabetic;
+    patient.save()
+    })
+    console.log('patient updated to mongoose!')
+});
+
+    // Patient.findOneAndUpdate({id}, 
+        // {
+    //  title = req.body.title,
+    //  lastname = req.body.lastname,
+    //  firstname = req.body.firstname,
+    //  mobile = req.body.mobile,
+    //  gender = req.body.gender,
+    //  allergies = req.body.allergies,
+    //  dob = req.body.dob,
+    //  diabetic = req.body.diabetic
+//         },
+//         {new: true}
+//         )
+//     .then(updatedPatient => res.json(updatedPatient))
+// })
+     
+// app.get("/populatedview", (req, res) => {
+//     db.User.find({})
+//       .populate("notes")
+//       .then(dbUser => {
+//         res.json(dbUser);
+//       })
+//       .catch(err => {
+//         res.json(err);
+//       });
+//   });
+  
+  
 
 // router.route('/update/:id').post((req, res) => {
 //     Patient.findById(req.params.id)

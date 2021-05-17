@@ -26,3 +26,28 @@
     width: 30%;
     padding: 5px 0 5px 0;
 }
+
+.background {
+    background-image: url(./home.png);
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 20%;
+    padding-bottom: 35%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+    opacity: 0.5; 
+        filter: alpha(opacity=20);
+    position: relative;
+}
+
+.user {
+    align-items: center;
+    text-align: center;
+    position:absolute;
+    margin: 15% 20% 0 40%;
+    z-index: 1;
+}

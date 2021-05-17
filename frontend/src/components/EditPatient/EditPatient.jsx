@@ -55,7 +55,7 @@ function EditPatient() {
 
         const formattedDate = date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
 
-        const newPatient = {
+        const updatedPatient = {
             title: input.title,
             lastname: input.lastname,
             firstname: input.firstname,
@@ -66,8 +66,9 @@ function EditPatient() {
             diabetic: diabetic
         }
 
-        axios.put(`http://localhost:3001/create/${id}`, newPatient)
-        history.push(`/viewPatient/${id}`)
+        axios.put(`http://localhost:3001/update/${id}`, updatedPatient)
+        // history.push(`/viewPatient/${id}`)
+        console.log(updatedPatient,"updated patient");
     }
 
     const loadPatient = async () => {
@@ -129,7 +130,9 @@ function EditPatient() {
                             <input type="checkbox" checked={diabetic} onChange={(event) => {setDiabetic(event.target.checked)}}></input>
                             <label> Yes</label>
                             {console.log(diabetic)}
-                            <Button onClick={handleClick} variant="danger">SAVE</Button>
+
+                            <Button onClick={handleClick} variant="danger">UPDATE</Button>
+
                         </Col>
                     </Row>
                 </Form>

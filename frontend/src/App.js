@@ -2,7 +2,6 @@ import React from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/Home";
 import CreatePatient from "./components/CreatePatient/CreatePatient";
 import PatientList from "./components/PatientList/PatientList";
 import CreateConsultation from "./components/CreateConsultation/CreateConsultation";
