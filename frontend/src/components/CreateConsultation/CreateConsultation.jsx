@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useHistory,useParams } from "react-router";
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from 'react-bootstrap';
@@ -9,6 +9,8 @@ import Navbar from "../Navbar/Navbar";
 function CreateConsultation() {
     const { user, isAuthenticated } = useAuth0();
 
+    let history = useHistory();
+
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -16,25 +18,12 @@ function CreateConsultation() {
     const date = showdate.getDate() + ' ' + monthNames[showdate.getMonth() + 1] + ' ' + showdate.getFullYear();
 
     const { id } = useParams();
+    console.log(`${id}`)
 
     const [patient, setPatient] = useState({
         lastname: '',
         firstname: ''
     })
-
-    const [input, setInput] = useState({
-        date: date,
-        patientId: {id},
-        lastname: patient.lastname,
-        firstname: patient.firstname,
-        illness: '',
-        diagnosis: '',
-        consultant: ''
-    })
-
-    
-
-  
 
     useEffect(() => {
         loadPatient();
@@ -47,7 +36,17 @@ function CreateConsultation() {
 
     };
 
+    const [input, setInput] = useState({
+        date: date,
+        patientId: `${id}`,
+        lastname: patient.lastname,
+        firstname: patient.firstname,
+        illness: '',
+        diagnosis: '',
+        consultant: ''
+    })
 
+    //Saving to Consultation table
     function handleChange(event) {
         const { name, value } = event.target;
 
@@ -64,16 +63,17 @@ function CreateConsultation() {
 
         const newConsultation = {
             date: input.date,
-            patientId: { id },
-            lastname: input.lastname,
-            firstname: input.firstname,
+            patientId: `${id}`,
+            lastname: patient.lastname,
+            firstname: patient.firstname,
             illness: input.illness,
             diagnosis: input.diagnosis,
-            consultant: input.consultant
+            consultant: user.name
         }
         console.log(input);
 
         axios.post('http://localhost:3001/createConsultation', newConsultation)
+        history.push(`/viewPatient/${id}`)
     }
 
     return (
