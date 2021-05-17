@@ -92,22 +92,7 @@ router.route("/update/:id").put((req,res) => {
     console.log('patient updated to mongoose!')
 });
 
-    // Patient.findOneAndUpdate({id}, 
-        // {
-    //  title = req.body.title,
-    //  lastname = req.body.lastname,
-    //  firstname = req.body.firstname,
-    //  mobile = req.body.mobile,
-    //  gender = req.body.gender,
-    //  allergies = req.body.allergies,
-    //  dob = req.body.dob,
-    //  diabetic = req.body.diabetic
-//         },
-//         {new: true}
-//         )
-//     .then(updatedPatient => res.json(updatedPatient))
-// })
-     
+
 // app.get("/populatedview", (req, res) => {
 //     db.User.find({})
 //       .populate("notes")
@@ -121,24 +106,5 @@ router.route("/update/:id").put((req,res) => {
   
   
 
-// router.route('/update/:id').post((req, res) => {
-//     Patient.findById(req.params.id)
-//       .then(foundPatient => {
-//         foundPatient.title = req.body.title;
-//         foundPatient.lastname = req.body.lastname;
-//         foundPatient.firstname = req.body.firstname;
-//         foundPatient.mobile = req.body.mobile;
-//         foundPatient.gender = req.body.gender;
-//         foundPatient.allergies = req.body.allergies;
-//         foundPatient.dob = req.body.dob;
-//         foundPatient.diabetic = req.body.diabetic;
-  
-//         foundPatient.save()
-//           .then(() => res.json('Patient updated!'))
-//           .catch(err => res.status(400).json('Error: ' + err));
-//       })
-//       .catch(err => res.status(400).json('Error: ' + err));
-//   });
-  
 
 module.exports = router;

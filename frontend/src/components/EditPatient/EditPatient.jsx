@@ -68,6 +68,7 @@ function EditPatient() {
 
         axios.put(`http://localhost:3001/update/${id}`, updatedPatient)
         // history.push(`/viewPatient/${id}`)
+        history.push(`/lists`)
         console.log(updatedPatient,"updated patient");
     }
 
