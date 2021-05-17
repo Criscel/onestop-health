@@ -58,7 +58,7 @@ function PatientList() {
 
                         <div className="col-sm">
                             <p type="button" className="consult" onClick={() => {
-                                history.push("/createConsultation")
+                                history.push(`/createConsultation/${patients._id}`)
                             }}>Add Consult</p>
                         </div>
 

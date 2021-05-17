@@ -8,6 +8,7 @@ import PatientList from "./components/PatientList/PatientList";
 import CreateConsultation from "./components/CreateConsultation/CreateConsultation";
 import ViewPatient from "./components/ViewPatient/ViewPatient";
 import Login from "./components/Login/Login";
+import EditPatient from "./components/EditPatient/EditPatient";
 
 function App() {
   const { isLoading } = useAuth0();  
@@ -33,12 +34,16 @@ function App() {
           <CreatePatient />
         </Route>
 
-        <Route path="/createConsultation">
+        <Route path="/createConsultation/:id">
           <CreateConsultation />
         </Route>
 
         <Route path="/viewPatient/:id">
           <ViewPatient />
+        </Route>
+
+        <Route path="/editPatient/:id">
+          <EditPatient />
         </Route>
 
       </Router>

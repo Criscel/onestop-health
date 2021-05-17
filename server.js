@@ -7,7 +7,13 @@ app.use(cors());
 app.use(express.json());
 
 //connect to moongose
-mongoose.connect("mongodb+srv://dbUser:Admin123@celcluster.p4l5f.mongodb.net/medical_records_db", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://dbUser:Admin123@celcluster.p4l5f.mongodb.net/medical_records_db", {useNewUrlParser: true, useUnifiedTopology: true})
+// const uri = process.env.ATLAS_URI;
+// mongoose.connect(uri, 
+//     { useNewUrlParser: true, 
+//         useCreateIndex: true,
+//     useUnifiedTopology: true 
+// });
 
 //require route
 app.use("/", require("./routes/patientRoute"));

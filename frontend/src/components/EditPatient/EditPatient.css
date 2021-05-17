@@ -1,0 +1,45 @@
+h3 {
+    text-align: center;
+    padding: 3% 0 3% 0;
+    color: rgb(196, 26, 111);
+    margin-bottom: 5%;
+}
+
+.form-group {
+    margin: 0 8% 20px 10%;
+}
+
+.form-check {
+    display: inline-flex;
+    margin-right: 10px;
+}
+
+#title {
+    margin-right: 41%;
+}
+
+#dob {
+    width: 10%;
+    float: right;
+}
+
+#gender {
+    width: 10%;
+    float: right;
+}
+
+
+#mobile {
+    width: 20%;
+    float: right;
+}
+
+#allergies {
+    width: 82%;
+}
+
+Button {
+    margin-top: 10px;
+    margin-bottom: 10%;
+    float: right;
+}

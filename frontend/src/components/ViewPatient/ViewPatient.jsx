@@ -4,6 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from "../Navbar/Navbar";
 import { useParams } from "react-router";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 
 import "./ViewPatient.css";
@@ -11,6 +12,8 @@ import "./ViewPatient.css";
 function ViewPatient() {
 
     const { isAuthenticated } = useAuth0();
+
+    let history = useHistory();
 
     const [patient, setPatient] = useState({
         title: '',
@@ -24,6 +27,7 @@ function ViewPatient() {
     })
 
     const { id } = useParams();
+    console.log({id});
 
     useEffect(() => {
         loadPatient();
@@ -92,7 +96,12 @@ function ViewPatient() {
                             </Row>
 
                             <Button className="patientBtn" variant="danger">DELETE</Button>
-                            <Button className="patientBtn" variant="warning">EDIT</Button>
+
+                            <div className="col-sm">
+                            <p type="button" className="consult" onClick={() => {
+                                history.push(`/editPatient/${id}`)
+                            }}>EDIT</p>
+                        </div>
 
                         </Form>
                     </div>

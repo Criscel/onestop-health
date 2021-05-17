@@ -4,3 +4,11 @@ h3 {
     color: rgb(196, 26, 111);
     margin-bottom: 5%;
 }
+.consultant {
+    margin-top: 10%;
+    position: relative;
+}
+#consultant {
+    width: 20%;
+    position: relative;
+}
