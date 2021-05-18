@@ -4,9 +4,13 @@
   "description": "project3",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Criscel/onestop-health.git"
@@ -25,6 +29,7 @@
     "mongoose": "^5.12.8",
     "node-stream": "^1.7.0",
     "react-icons": "^4.2.0",
+    "serve": "^11.3.2",
     "stream": "0.0.2"
   },
   "devDependencies": {
