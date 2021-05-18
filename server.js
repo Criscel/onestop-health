@@ -19,13 +19,12 @@ mongoose.connect(
   
   if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
-    app.use(express.static('client/build'));
+    app.use(express.static('frontend/build'));
   
     // Express serve up index.html file if it doesn't recognize route
-    app.get('*', (request, response) => {
-        response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
-  }
+    app.get('*',(req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+});
 
 
 //require route
