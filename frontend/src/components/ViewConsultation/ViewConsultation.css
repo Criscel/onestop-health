@@ -1,0 +1,12 @@
+.header-consult {
+    margin: 0 13% 0 13%;
+}
+
+.container-header {
+    background: rgb(255, 169, 107);
+    padding-bottom: 10px;
+}
+.container-consult {
+    border: 2px dotted gray;
+    padding-bottom: 10px;
+}
