@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./CreatePatient.css";
@@ -10,8 +9,6 @@ import Navbar from '../Navbar/Navbar';
 
 function CreatePatient() {
     const { isAuthenticated } = useAuth0();
-
-    let history = useHistory();
 
     const [diabetic, setDiabetic] = useState(false);
 

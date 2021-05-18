@@ -29,19 +29,9 @@ function ViewPatient() {
         diabetic: ''
     })
 
-    const [consult, setConsult] = useState({
-        date: '',
-        patientId: '',
-        lastname: '',
-        firstname: '',
-        illness: '',
-        diagnosis: '',
-        consultant: ''
-    })
 
     useEffect(() => {
         loadPatient();
-        loadConsultation();
     }, []);
 
     const loadPatient = async () => {
@@ -50,19 +40,11 @@ function ViewPatient() {
         console.log(result, "Patient Data Retrieved")
     };
 
-    const loadConsultation = async () => {
-        const consult = await axios.get(`http://localhost:3001/consults`);
-
-        setConsult(consult.data);
-        console.log(consult, "Patients Consultation Retrieved")
-    };
-
     const deletePatient = async () => {
         await axios.delete(`http://localhost:3001/${id}`);
         history.push("/lists")
     }
 
-    // const ArrayConsult = Array.from(consult);
 
     return (
         isAuthenticated && (
