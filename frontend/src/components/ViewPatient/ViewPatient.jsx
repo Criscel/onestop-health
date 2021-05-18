@@ -15,6 +15,9 @@ function ViewPatient() {
 
     let history = useHistory();
 
+    const { id } = useParams();
+    console.log({ id });
+
     const [patient, setPatient] = useState({
         title: '',
         lastname: '',
@@ -26,23 +29,40 @@ function ViewPatient() {
         diabetic: ''
     })
 
-    const { id } = useParams();
-    console.log({ id });
+    const [consult, setConsult] = useState({
+        date: '',
+        patientId: '',
+        lastname: '',
+        firstname: '',
+        illness: '',
+        diagnosis: '',
+        consultant: ''
+    })
 
     useEffect(() => {
         loadPatient();
+        loadConsultation();
     }, []);
 
     const loadPatient = async () => {
         const result = await axios.get(`http://localhost:3001/${id}`);
         setPatient(result.data)
-        console.log(result)
+        console.log(result, "Patient Data Retrieved")
+    };
+
+    const loadConsultation = async () => {
+        const consult = await axios.get(`http://localhost:3001/consults`);
+
+        setConsult(consult.data);
+        console.log(consult, "Patients Consultation Retrieved")
     };
 
     const deletePatient = async () => {
         await axios.delete(`http://localhost:3001/${id}`);
         history.push("/lists")
     }
+
+    // const ArrayConsult = Array.from(consult);
 
     return (
         isAuthenticated && (
@@ -106,23 +126,14 @@ function ViewPatient() {
                                 history.push(`/editPatient/${id}`)
                             }}>EDIT</Button>
 
+                            <Button className="patientBtn" variant="success" onClick={() => {
+                                history.push(`/viewConsultation/${id}`)
+                            }}>VIEW CONSULTATIONS</Button>
+
                         </Form>
                     </div>
                 </div>
-                <div className="header-consult">
-                    <h3>CONSULTATION HISTORY</h3>
-                </div>
-                <Form className="form-consult">
-                    <Col xs={3}>
-                    <label>Date: </label>
-                       <input className='form-control'></input>    
-                    </Col>
-                    <Col>
-                    <label>Consultant</label>
-
-                    </Col>
-                </Form>
-            </div >
+            </div>
         )
     )
 }

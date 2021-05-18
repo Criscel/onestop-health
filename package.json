@@ -23,7 +23,9 @@
     "express": "^4.17.1",
     "express-openid-connect": "^2.4.0",
     "mongoose": "^5.12.8",
-    "react-icons": "^4.2.0"
+    "node-stream": "^1.7.0",
+    "react-icons": "^4.2.0",
+    "stream": "0.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

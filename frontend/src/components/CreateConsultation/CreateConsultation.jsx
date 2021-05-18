@@ -15,7 +15,7 @@ function CreateConsultation() {
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     const showdate = new Date();
-    const date = showdate.getDate() + ' ' + monthNames[showdate.getMonth() + 1] + ' ' + showdate.getFullYear();
+    const date = showdate.getDate() + ' ' + monthNames[showdate.getMonth()] + ' ' + showdate.getFullYear();
 
     const { id } = useParams();
     console.log(`${id}`)
@@ -38,7 +38,7 @@ function CreateConsultation() {
 
     const [input, setInput] = useState({
         date: date,
-        patientId: `${id}`,
+        patientId: {id},
         lastname: patient.lastname,
         firstname: patient.firstname,
         illness: '',

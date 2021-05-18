@@ -8,6 +8,12 @@ h3 {
     margin: 10px 10% 10% 10%;
 }
 
+.header {
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 .patient {
     margin-bottom: 20px;
 }
@@ -17,7 +23,21 @@ h3 {
 }
 
 .header-consult {
-    margin-top: 10%;
+    /* margin: 10% 10% 10% 0; */
     align-items: center;
     text-align: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.conName {
+    position: relative;
+}
+
+.form-consult {
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 15px;
 }
