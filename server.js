@@ -22,9 +22,11 @@ mongoose.connect(
     app.use(express.static('frontend/build'));
   
     // Express serve up index.html file if it doesn't recognize route
-    app.get('*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-});
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    });
+  }
 
 
 //require route
