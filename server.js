@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const apps = require("./routes/patientRoute");
 
 app.use(cors());
 app.use(express.json());
@@ -21,16 +22,19 @@ mongoose.connect(
     // Express will serve up production assets
     app.use(express.static('frontend/build'));
   
-    // Express serve up index.html file if it doesn't recognize route
-    const path = require('path');
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend/public/index.html'));
-    });
+ 
+ 
   };
 
 
 //require route
-app.use("/", require("./routes/patientRoute"));
+app.use(apps);
+
+   // Express serve up index.html file if it doesn't recognize route
+   const path = require('path');
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend/public/index.html'));
+  });
 
 //port must be different from react(3000)
 const port = process.env.PORT || 3001;
