@@ -17,14 +17,17 @@ mongoose.connect(
     }
   );
   
-  if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+  if (process.env.NODE_ENV === 'production') {
+    // Express will serve up production assets
+    app.use(express.static('frontend/build'));
   
+    // Express serve up index.html file if it doesn't recognize route
+    const path = require('path');
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'))
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
     });
-    
   };
+
 
 //require route
 app.use("/", require("./routes/patientRoute"));
