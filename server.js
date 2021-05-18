@@ -8,20 +8,22 @@ app.use(cors());
 app.use(express.json());
 
 // connect to moongose
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/medical_records_db',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-  );
+mongoose.connect("mongodb+srv://dbUser:Admin123@celcluster.p4l5f.mongodb.net/medical_records_db", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+
+// mongoose.connect(
+//     process.env.MONGODB_URI || 'mongodb://localhost/medical_records_db',
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       useCreateIndex: true,
+//       useFindAndModify: false
+//     }
+//   );
   
-  if (process.env.NODE_ENV === 'production') {
-    // Express will serve up production assets
-    app.use(express.static('frontend/build'));
-  };
+//   if (process.env.NODE_ENV === 'production') {
+//     // Express will serve up production assets
+//     app.use(express.static('frontend/build'));
+//   };
 
 
 //require route
