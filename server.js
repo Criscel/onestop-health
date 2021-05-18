@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
-//connect to moongose
+// connect to moongose
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/medical_records_db',
     {

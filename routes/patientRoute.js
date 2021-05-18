@@ -43,49 +43,6 @@ router.route("/consults").get((req, res) => {
   console.log("consultation list below");
 });
 
-// router.route("/patientConsult").get((req, res) => {
-//     // db.collection('patients').aggregate([
-//         Patient.aggregate([
-//         {
-//           $lookup: {
-//             from: 'Consultation',
-//             localField: "_id",
-//             foreignField: "patientId",
-//             as: "consult"
-//           }
-//         },
-//         {
-//           $match: {
-//             $expr: {
-//               $lt: [
-//                 {
-//                   $size: "$consult"
-//                 },
-//                 5
-//               ]
-//             }
-//           }
-//         }
-//       ]).then((foundConsult) => res.json(foundConsult));
-//   console.log("aggregate list below");
-// });
-
-
-// router.route("/populatedview").get((req, res,) => {
-//     Consultation.find({patientId: "60a0b44b3fce0a7261cd46e3"})
-//         // populate("consults")
-//       .then((foundConsult) => res.json(foundConsult));
-//   });
-
-// router.route("/populated").get((req, res) => {
-//     Consultation.find({})
-//     .populate("patients")
-//     .then(foundConsult => {
-//       res.json(foundConsult);
-//     })
-
-// })
-
 //select specific patient by id
 router.route("/:id").get((req, res) => {
   Patient.findById(req.params.id)
