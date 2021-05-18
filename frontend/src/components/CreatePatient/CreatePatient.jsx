@@ -61,7 +61,7 @@ function CreatePatient() {
         }
 
         axios.post('http://localhost:3001/create', newPatient)
-        history.push("/lists")
+        alert('Patient '+ input.firstname + ' ' + input.lastname + ' has been created!')
     }
 
     return (
